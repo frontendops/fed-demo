@@ -1,5 +1,4 @@
 <template>
-  <!-- make this a scoped slot -->
   <div>
     <h1>{{ title }}</h1>
     <div class="total-price">
@@ -7,7 +6,6 @@
       <span class="lines"></span>
       <span class="total-price__total">${{total}}</span>
     </div>
-    <!-- make this a slot and move this code up to the parent 🤗 -->
     <div role="list" class="subscription-list">
       <AltSubscription
         v-for="(item, index) in subscriptions"
@@ -15,6 +13,7 @@
         :title="item.name"
         :price="item.price"
         :color="item.color"
+        @listen="alertUser(item)"
       />
     </div>
   </div>
@@ -71,6 +70,9 @@ export default {
       );
       sum = prices.reduce((a, b) => a + b);
       this.total = sum;
+    },
+    alertUser(e) {
+      alert("you clicked on " + e.name);
     }
   },
   mounted() {

@@ -1,5 +1,5 @@
 <template>
-  <div class="alt-subscription" :style="`background: ${color}`">
+  <div class="alt-subscription" :style="`background: ${color}`" @click="triggerAlert(e)">
     <h1>{{title}}</h1>
 
     <div class="alt-details">
@@ -17,13 +17,19 @@ export default {
     price: Number,
     color: String,
     date: Date
+  },
+  methods: {
+    triggerAlert(e) {
+      //   can pass value as second arg, such as the clicked on item
+      this.$emit("listen", e);
+    }
   }
 };
 </script>
 
 <style scoped>
 .alt-subscription {
-    color: #ffffff;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;

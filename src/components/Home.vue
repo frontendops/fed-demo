@@ -2,9 +2,10 @@
   <div>
     <div class="home">
       <SubscriptionList/>
-      <ScopedList>
+
+      <!-- <ScopedList>
         <template slot-scope="props">
-          <AltSubscription
+          <Subscription
             v-for="(item, index) in props.items"
             :key="index"
             :title="item.name"
@@ -13,6 +14,12 @@
           />
         </template>
       </ScopedList>
+
+      <ScopedList>
+        <template slot-scope="props">
+          <Gallery :items="props.items"/>
+        </template>
+      </ScopedList>-->
     </div>
     <router-link to="/addservice">
       <AddService/>
@@ -25,12 +32,16 @@ import SubscriptionList from "./SubscriptionList";
 import AddService from "./AddService";
 import ScopedList from "./ScopedList";
 import AltSubscription from "./AltSubscription";
+import Gallery from "./Gallery";
+import Subscription from "./Subscription";
 export default {
   components: {
     SubscriptionList,
     AddService,
     ScopedList,
-    AltSubscription
+    AltSubscription,
+    Gallery,
+    Subscription
   },
   name: "Home",
   data() {
