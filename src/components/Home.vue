@@ -20,6 +20,13 @@
           <Gallery :items="props.items"/>
         </template>
       </ScopedList>-->
+
+      <section>
+        <button @click="chosenComponent='DynamicComponent'">Switch</button>
+        <button @click="chosenComponent='DynamicComponent2'">Switch</button>
+
+        <component :is="chosenComponent"></component>
+      </section>
     </div>
     <router-link to="/addservice">
       <AddService/>
@@ -34,6 +41,9 @@ import ScopedList from "./ScopedList";
 import AltSubscription from "./AltSubscription";
 import Gallery from "./Gallery";
 import Subscription from "./Subscription";
+import DynamicComponent from "./DynamicComponent";
+import DynamicComponent2 from "./DynamicComponent2";
+
 export default {
   components: {
     SubscriptionList,
@@ -41,7 +51,9 @@ export default {
     ScopedList,
     AltSubscription,
     Gallery,
-    Subscription
+    Subscription,
+    DynamicComponent,
+    DynamicComponent2
   },
   name: "Home",
   data() {
@@ -104,7 +116,8 @@ export default {
           url: "https://via.placeholder.com/600/54176f",
           thumbnailUrl: "https://via.placeholder.com/150/54176f"
         }
-      ]
+      ],
+      chosenComponent: ""
     };
   }
 };
