@@ -22,6 +22,10 @@
       </ScopedList>-->
 
       <section>
+        <!-- @click="val++" -->
+        <button @click="val++">increase</button>
+        <Test :num="val"/>
+
         <button @click="chosenComponent='DynamicComponent'">Switch</button>
         <button @click="chosenComponent='DynamicComponent2'">Switch</button>
 
@@ -43,6 +47,7 @@ import Gallery from "./Gallery";
 import Subscription from "./Subscription";
 import DynamicComponent from "./DynamicComponent";
 import DynamicComponent2 from "./DynamicComponent2";
+import Test from "./Test";
 
 export default {
   components: {
@@ -53,7 +58,8 @@ export default {
     Gallery,
     Subscription,
     DynamicComponent,
-    DynamicComponent2
+    DynamicComponent2,
+    Test
   },
   name: "Home",
   data() {
@@ -117,7 +123,8 @@ export default {
           thumbnailUrl: "https://via.placeholder.com/150/54176f"
         }
       ],
-      chosenComponent: ""
+      chosenComponent: "",
+      val: 10
     };
   }
 };
