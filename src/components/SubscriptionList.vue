@@ -31,7 +31,6 @@ export default {
   data() {
     return {
       title: "Your subscriptions",
-      total: null,
       subscriptions: [
         {
           name: "Netflix",
@@ -62,17 +61,22 @@ export default {
     };
   },
   methods: {
-    getTotal() {
+    alertUser(e) {
+      // alert("you clicked on " + e.name);
+      this.subscriptions = this.subscriptions.filter( item => {
+        return item.name !== e.name
+      })
+    }
+  },
+  computed: {
+    total () {
       let prices = [];
       let sum;
       this.subscriptions.forEach(subscription =>
         prices.push(subscription.price)
       );
       sum = prices.reduce((a, b) => a + b);
-      this.total = sum;
-    },
-    alertUser(e) {
-      alert("you clicked on " + e.name);
+      return sum;
     }
   },
   mounted() {
